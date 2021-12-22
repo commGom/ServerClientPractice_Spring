@@ -1,5 +1,6 @@
 package com.example.basic.controller;
 
+import com.example.basic.mapper.DemoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,20 @@ public class DBController {
     @Autowired
     DataSource ds;
 
+    @Autowired
+    DemoMapper demoMapper;
+
+    @GetMapping("/mybatis/demo")
+    @ResponseBody
+    public List<Map<String, Object>> mybatisDemo() {
+        return demoMapper.select();
+    }
+
+    @GetMapping("/mybatis/demo2")
+    @ResponseBody
+    public List<Map<String, Object>> mybatisDemo2(@RequestParam("user")String user) {
+        return demoMapper.findByUser(user);
+    }
     @GetMapping("/db/test")
     @ResponseBody
     public List<Map<String, Object>> dbTest(@RequestParam(value="user",required = false, defaultValue = "") String user){
