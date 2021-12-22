@@ -1,6 +1,8 @@
 package com.example.basic.controller;
 
 import com.example.basic.mapper.DemoMapper;
+import com.example.basic.model.Demo;
+import com.example.basic.repository.DemoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -15,12 +17,18 @@ import java.util.Map;
 public class DBController {
     @Autowired
     JdbcTemplate jt;
-
     @Autowired
     DataSource ds;
-
     @Autowired
     DemoMapper demoMapper;
+    @Autowired
+    DemoRepository demoRepository;
+
+    @GetMapping("/jpa/demo")
+    @ResponseBody
+    public List<Demo> jpaDemo(){
+        return demoRepository.findAll();
+    }
 
     @GetMapping("/mybatis/demo")
     @ResponseBody
