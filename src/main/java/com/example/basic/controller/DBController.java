@@ -41,4 +41,11 @@ public class DBController {
     public List<Map<String, Object>> parkDB(@PathVariable("address") String address){
         return jt.queryForList("select * from holiday_parking where address like concat('%',?,'%')",address);
     }
+
+    @GetMapping("/db/park")
+    @ResponseBody
+    public List<Map<String, Object>> parkDBWithPaging(@RequestParam(value="page",defaultValue = "0") int page){
+        page=page*10-10;
+        return jt.queryForList("select * from holiday_parking limit ?, 10",page);
+    }
 }
