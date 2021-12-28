@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>[[${name}]]</h3>
+    <u>
+        <i>
+            [[${number}]]
+        </i>
+    </u>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>나이</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td th:text="${user.userId}"></td>
+                <td th:text="${user.userName}"></td>
+                <td th:text="${user.userAge}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

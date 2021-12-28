@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+  <thead>
+  <tr>
+    <th>아이디</th>
+    <th>이름</th>
+    <th>나이</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user : ${userList}">
+    <td th:text="${user.userId}"></td>
+    <td th:text="${user.userName}"></td>
+    <td th:text="${user.userAge}"></td>
+  </tr>
+  </tbody>
+</table>
+<hr>
+<!--특수한 기능 #-->
+<th:block th:each="pageNumber :${#numbers.sequence(1,10)}">
+  <span th:text="${pageNumber}"></span>
+</th:block>
+</body>
+</html>
